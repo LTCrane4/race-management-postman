@@ -1,0 +1,85 @@
+{
+	"info": {
+		"_postman_id": "738ea16d-45da-4d0e-8110-e994d035076e",
+		"name": "race-management-service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authenticated Endpoints",
+			"item": [
+				{
+					"name": "User Service",
+					"item": [
+						{
+							"name": "Get User /user/{id}",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/user/id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"user",
+										"id"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create New User - /user/new",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/user/new",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"user",
+										"new"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{authToken}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	]
+}
