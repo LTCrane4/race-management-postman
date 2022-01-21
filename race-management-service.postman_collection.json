@@ -36,7 +36,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"username\": \"testuser3\",\n    \"password\": \"password\",\n    \"firstName\": \"Test\",\n    \"lastName\": \"User3\",\n    \"email\": \"test3@testuser.com\"\n}",
+									"raw": "{\n    \"username\": \"testuser7\",\n    \"password\": \"password\",\n    \"firstName\": \"Test\",\n    \"lastName\": \"User3\",\n    \"email\": \"test3@testuser.com\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -68,6 +68,121 @@
 									],
 									"path": [
 										"user"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update User - PATCH /user/{id}",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\": \"optional\",\n    \"lastName\": \"optional\",\n    \"email\": \"optional\",\n    \"userType\": \"USER\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/user/{{userId}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"user",
+										"{{userId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Search Users",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/user/search?type=NAME&value=User",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"user",
+										"search"
+									],
+									"query": [
+										{
+											"key": "type",
+											"value": "NAME",
+											"description": "Allowed values: TYPE, NAME"
+										},
+										{
+											"key": "value",
+											"value": "User",
+											"description": "if type, must be a valid user type.  otherwise any value works"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete User - DELETE /user/{id}",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/user/e8200a9a-37c0-441f-8d0e-1bb6408407c3",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"user",
+										"e8200a9a-37c0-441f-8d0e-1bb6408407c3"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Racer Service",
+					"item": [
+						{
+							"name": "Get All Racers - GET /racer",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/racer",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"racer"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Single Racer - GET /racer/{id}",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/racer/{{racerId}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"racer",
+										"{{racerId}}"
 									]
 								}
 							},
@@ -109,48 +224,87 @@
 		},
 		{
 			"name": "Login Endpoints",
-			"item": []
-		},
-		{
-			"name": "Login - User /user/login",
-			"event": [
+			"item": [
 				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"var response = JSON.parse(responseBody);",
-							"pm.environment.set(\"authToken\", response.token);"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"username\": \"tcrane\",\n    \"password\": \"password\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+					"name": "Login - User /user/login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var response = JSON.parse(responseBody);",
+									"pm.environment.set(\"authToken\", response.token);"
+								],
+								"type": "text/javascript"
+							}
 						}
-					}
-				},
-				"url": {
-					"raw": "{{base_url}}/login",
-					"host": [
-						"{{base_url}}"
 					],
-					"path": [
-						"login"
-					]
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"testuser\",\n    \"password\": \"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login - Admin Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var response = JSON.parse(responseBody);",
+									"pm.environment.set(\"authToken\", response.token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"testadmin\",\n    \"password\": \"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		}
 	]
 }
