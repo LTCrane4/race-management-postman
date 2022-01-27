@@ -36,7 +36,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"username\": \"testuser7\",\n    \"password\": \"password\",\n    \"firstName\": \"Test\",\n    \"lastName\": \"User3\",\n    \"email\": \"test3@testuser.com\"\n}",
+									"raw": "{\n    \"username\": \"testcreate\",\n    \"password\": \"password\",\n    \"firstName\": \"Test\",\n    \"lastName\": \"Create\",\n    \"email\": \"test@testuser.com\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -136,13 +136,13 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/user/e8200a9a-37c0-441f-8d0e-1bb6408407c3",
+									"raw": "{{base_url}}/user/9dd94717-f31e-4044-a2a9-157496814220",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
 										"user",
-										"e8200a9a-37c0-441f-8d0e-1bb6408407c3"
+										"9dd94717-f31e-4044-a2a9-157496814220"
 									]
 								}
 							},
@@ -183,6 +183,32 @@
 									"path": [
 										"racer",
 										"{{racerId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Racer - POST /racer",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\": \"Test\", // required\n    \"lastName\": \"Racer\", // required\n    \"category\": \"cat1\", // required\n    \"middleName\": \"Middlename\",\n    \"phoneNumber\": \"123456789\",\n    \"teamName\": \"Test Team\",\n    \"email\": \"testracer@testteam.com\",\n    \"bibNumber\": 1\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/racer",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"racer"
 									]
 								}
 							},
@@ -281,11 +307,14 @@
 						}
 					],
 					"request": {
+						"auth": {
+							"type": "noauth"
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"username\": \"testadmin\",\n    \"password\": \"password\"\n}",
+							"raw": "{\n    \"username\": \"testadmin\",\n    \"password\": \"TestAdminPassword\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -303,6 +332,34 @@
 						}
 					},
 					"response": []
+				}
+			]
+		},
+		{
+			"name": "Spring Actuator",
+			"item": [
+				{
+					"name": "Unauthenticated",
+					"item": [
+						{
+							"name": "Health Check",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/actuator/health",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"actuator",
+										"health"
+									]
+								}
+							},
+							"response": []
+						}
+					]
 				}
 			]
 		}
