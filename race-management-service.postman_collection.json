@@ -17,13 +17,20 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/user/{{userId}}",
+									"raw": "{{base_url}}/user/:id",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
 										"user",
-										"{{userId}}"
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "2cc6132a-7402-4e96-b043-edd6f26e1e2b",
+											"description": "The user id to get"
+										}
 									]
 								}
 							},
@@ -36,7 +43,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"username\": \"testcreate\",\n    \"password\": \"password\",\n    \"firstName\": \"Test\",\n    \"lastName\": \"Create\",\n    \"email\": \"test@testuser.com\"\n}",
+									"raw": "{\n    \"username\": \"localtest\",\n    \"password\": \"password\",\n    \"firstName\": \"Local\",\n    \"lastName\": \"User\",\n    \"email\": \"localuser@test.fake\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -80,7 +87,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"firstName\": \"optional\",\n    \"lastName\": \"optional\",\n    \"email\": \"optional\",\n    \"userType\": \"USER\"\n}",
+									"raw": "{\n    \"firstName\": \"optional\",\n    \"lastName\": \"optional\",\n    \"email\": \"optional\",\n    \"userType\": \"USER\",\n    \"updatedTimestamp\": \"2022-01-31T22:38:16.325590Z\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -88,13 +95,20 @@
 									}
 								},
 								"url": {
-									"raw": "{{base_url}}/user/{{userId}}",
+									"raw": "{{base_url}}/user/:id",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
 										"user",
-										"{{userId}}"
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": null,
+											"description": "The user id to delete"
+										}
 									]
 								}
 							},
@@ -136,13 +150,20 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/user/9dd94717-f31e-4044-a2a9-157496814220",
+									"raw": "{{base_url}}/user/:id",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
 										"user",
-										"9dd94717-f31e-4044-a2a9-157496814220"
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "9dd94717-f31e-4044-a2a9-157496814220",
+											"description": "The User ID to be deleted"
+										}
 									]
 								}
 							},
@@ -176,13 +197,20 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/racer/{{racerId}}",
+									"raw": "{{base_url}}/racer/:id",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
 										"racer",
-										"{{racerId}}"
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "ae69de07-f04c-4b73-bf6f-1e1f79fa943d",
+											"description": "The racer ID to get"
+										}
 									]
 								}
 							},
@@ -195,7 +223,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"firstName\": \"Test\", // required\n    \"lastName\": \"Racer\", // required\n    \"category\": \"cat1\", // required\n    \"middleName\": \"Middlename\",\n    \"phoneNumber\": \"123456789\",\n    \"teamName\": \"Test Team\",\n    \"email\": \"testracer@testteam.com\",\n    \"bibNumber\": 1\n}",
+									"raw": "{\n    \"firstName\": \"Cat2\",\n    \"lastName\": \"Racer\",\n    \"category\": \"CAT2\",\n    \"middleName\": \"Middlename\",\n    \"phoneNumber\": \"123456789\",\n    \"teamName\": \"Test Team\",\n    \"email\": \"testracer@testteam.com\",\n    \"bibNumber\": 2\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -209,6 +237,172 @@
 									],
 									"path": [
 										"racer"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Racer  - PATCH /racer/:id",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"updatedTimestamp\": \"2022-02-01T21:37:12.262491Z\",\n    \"firstName\": \"Test\",\n    \"lastName\": \"Update\",\n    \"middleName\": \"Middlename\",\n    \"teamName\": \"Test Team\",\n    \"phoneNumber\": \"123-456-7890\",\n    \"email\": \"test@test.fake\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/racer/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"racer",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "02af079f-c398-4051-813c-e42cc71ec1c9"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Racer - DELETE /racer",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"ae69de07-f04c-4b73-bf6f-1e1f79fa943d\",\n    \"updatedTimestamp\": \"2022-02-01T21:41:38.636146Z\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/racer",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"racer"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Race Service",
+					"item": [
+						{
+							"name": "Get All Races - GET /race",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/race",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"race"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Single Race - GET /race/{id}",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/race/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"race",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": null
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Race - POST /race",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Test Race with Racers\",\n    \"category\": \"CAT2\",\n    \"racerIds\": []\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/race",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"race"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add Racers to Race - POST /race/{id}/add-racers",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"updatedTimestamp\": \"2022-02-02T22:10:11.552410Z\",\n    \"racerIds\": [\"bf9a654d-70ee-4b04-8818-75684b1621ec\"]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/race/:id/add-racers",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"race",
+										":id",
+										"add-racers"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "340ab201-50b5-4734-a8f3-29a0373d112c",
+											"description": "The race id to add racers to"
+										}
 									]
 								}
 							},
