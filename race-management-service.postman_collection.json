@@ -406,7 +406,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"oldPassword\": \"cGFzc3dvcmQ=\",\n  \"newPassword\": \"UGFzc3dvcmQ=\"\n}"
+									"raw": "{\n  \"oldPassword\": \"base64\",\n  \"newPassword\": \"base64\"\n}"
 								},
 								"url": {
 									"raw": "{{base_url}}/user/:id/change-password",
