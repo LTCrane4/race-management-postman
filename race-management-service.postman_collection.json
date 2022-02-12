@@ -9,13 +9,261 @@
 			"name": "Authenticated Endpoints",
 			"item": [
 				{
+					"name": "Race Service",
+					"item": [
+						{
+							"name": "Start Race - PUT /race/{id}/start-race",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "accept",
+										"value": "*/*"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"updatedTimestamp\": \"2022-02-03T18:30:38.099010Z\",\n  \"startDate\": \"yyyy-mm-dd\",\n  \"startTime\": \"hh:mm:ss.xxxxxxx\"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/race/:id/start-race",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"race",
+										":id",
+										"start-race"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "340ab201-50b5-4734-a8f3-29a0373d112c"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Races - GET /race",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/race",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"race"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Single Race - GET /race/{id}",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/race/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"race",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": null
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Races for Racer - GET /race/races-for-racer/{racerId}",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/race/races-for-racer/:racerId",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"race",
+										"races-for-racer",
+										":racerId"
+									],
+									"variable": [
+										{
+											"key": "racerId",
+											"value": "02af079f-c398-4051-813c-e42cc71ec1c9"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Race - PATCH /race/:id",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"updatedTimestamp\": \"2022-02-02T22:10:11.552410Z\",\n    \"name\": \"Test Changed Name with Racers\",\n    \"category\": \"CAT1\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/race/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"race",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "340ab201-50b5-4734-a8f3-29a0373d112c"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Race - POST /race",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Testing Race for filter\",\n    \"category\": \"CAT1\",\n    \"racerIds\": [\"02af079f-c398-4051-813c-e42cc71ec1c9\"]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/race",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"race"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add Racers to Race - POST /race/{id}/add-racers",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"accept": true
+								}
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"updatedTimestamp\": \"2022-02-08T03:10:38.503069Z\",\n    \"racerIds\": [\"25d0ab4c-c99f-4d97-a065-bac01676cb55\"]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/race/:id/add-racers",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"race",
+										":id",
+										"add-racers"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "5a91b3a8-c8c0-4027-9c6e-a728b97a99c3",
+											"description": "The race id to add racers to"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
 					"name": "User Service",
 					"item": [
+						{
+							"name": "Create New User - /user/new",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"testuser1\",\n    \"password\": \"password\",\n    \"firstName\": \"Local\",\n    \"lastName\": \"User\",\n    \"email\": \"localuser@test.fake\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/user/new",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"user",
+										"new"
+									]
+								}
+							},
+							"response": []
+						},
 						{
 							"name": "Get User /user/{id}",
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									}
+								],
 								"url": {
 									"raw": "{{base_url}}/user/:id",
 									"host": [
@@ -31,33 +279,6 @@
 											"value": "2cc6132a-7402-4e96-b043-edd6f26e1e2b",
 											"description": "The user id to get"
 										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Create New User - /user/new",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"username\": \"localtest\",\n    \"password\": \"password\",\n    \"firstName\": \"Local\",\n    \"lastName\": \"User\",\n    \"email\": \"localuser@test.fake\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{base_url}}/user/new",
-									"host": [
-										"{{base_url}}"
-									],
-									"path": [
-										"user",
-										"new"
 									]
 								}
 							},
@@ -168,6 +389,45 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "Change Password",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "accept",
+										"value": "*/*"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"oldPassword\": \"cGFzc3dvcmQ=\",\n  \"newPassword\": \"UGFzc3dvcmQ=\"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/user/:id/change-password",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"user",
+										":id",
+										"change-password"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "87d60040-e00b-484e-ba0c-c095fecaefcb",
+											"description": "The UUID of the User to change the password of"
+										}
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
@@ -223,7 +483,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"firstName\": \"Cat2\",\n    \"lastName\": \"Racer\",\n    \"category\": \"CAT2\",\n    \"middleName\": \"Middlename\",\n    \"phoneNumber\": \"123456789\",\n    \"teamName\": \"Test Team\",\n    \"email\": \"testracer@testteam.com\",\n    \"bibNumber\": 2\n}",
+									"raw": "{\n    \"firstName\": \"Cat1\",\n    \"lastName\": \"Racer\",\n    \"category\": \"CAT1\",\n    \"middleName\": \"Middlename\",\n    \"phoneNumber\": \"123456789\",\n    \"teamName\": \"Test Team\",\n    \"email\": \"testracer@testteam.com\",\n    \"bibNumber\": 2\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -296,113 +556,6 @@
 									],
 									"path": [
 										"racer"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "Race Service",
-					"item": [
-						{
-							"name": "Get All Races - GET /race",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{base_url}}/race",
-									"host": [
-										"{{base_url}}"
-									],
-									"path": [
-										"race"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get Single Race - GET /race/{id}",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{base_url}}/race/:id",
-									"host": [
-										"{{base_url}}"
-									],
-									"path": [
-										"race",
-										":id"
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": null
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Create Race - POST /race",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"name\": \"Test Race with Racers\",\n    \"category\": \"CAT2\",\n    \"racerIds\": []\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{base_url}}/race",
-									"host": [
-										"{{base_url}}"
-									],
-									"path": [
-										"race"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Add Racers to Race - POST /race/{id}/add-racers",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"updatedTimestamp\": \"2022-02-02T22:10:11.552410Z\",\n    \"racerIds\": [\"bf9a654d-70ee-4b04-8818-75684b1621ec\"]\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{base_url}}/race/:id/add-racers",
-									"host": [
-										"{{base_url}}"
-									],
-									"path": [
-										"race",
-										":id",
-										"add-racers"
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": "340ab201-50b5-4734-a8f3-29a0373d112c",
-											"description": "The race id to add racers to"
-										}
 									]
 								}
 							},
@@ -509,6 +662,44 @@
 						"body": {
 							"mode": "raw",
 							"raw": "{\n    \"username\": \"testadmin\",\n    \"password\": \"TestAdminPassword\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login - Current User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var response = JSON.parse(responseBody);",
+									"pm.environment.set(\"authToken\", response.token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"{{currentUser}}\",\n    \"password\": \"Password\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
