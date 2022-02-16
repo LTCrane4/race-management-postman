@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "8e299cb9-a0e3-4406-bc5c-12db0fe11c7f",
+		"_postman_id": "1ce0fdbc-4a02-4f84-873b-039e31c109ac",
 		"name": "race-management-service",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -227,6 +227,19 @@
 					"item": [
 						{
 							"name": "Create New User - /user/new",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var response = JSON.parse(pm.response.body);",
+											"",
+											"pm.collectionVariables.set('userId', response.id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"method": "POST",
 								"header": [],
@@ -254,6 +267,19 @@
 						},
 						{
 							"name": "Get User /user/{id}",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var response = JSON.parse(pm.response.body);",
+											"",
+											"pm.collectionVariables.set('userId', )"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"method": "GET",
 								"header": [
@@ -276,7 +302,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "2cc6132a-7402-4e96-b043-edd6f26e1e2b",
+											"value": "9397b916-4f44-4a8b-8457-a0c5a44b8c9d",
 											"description": "The user id to get"
 										}
 									]
@@ -392,6 +418,17 @@
 						},
 						{
 							"name": "Change Password",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"method": "PATCH",
 								"header": [
